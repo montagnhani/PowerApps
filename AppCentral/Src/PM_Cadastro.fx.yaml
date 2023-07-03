@@ -10,6 +10,81 @@ PM_Cadastro As screen:
         Y: =16
         ZIndex: =1
 
+    "Gallery3 As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
+        DelayItemLoading: =true
+        Height: =330
+        Items: =Filter(ColRegistrosMateriais,TxtSap.Text in Material)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =90
+        Width: =209
+        X: =640
+        Y: =353
+        ZIndex: =1
+
+        Title3 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =8
+            Text: =ThisItem.Material
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 86
+            X: =16
+            Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle3.Size * 1.8)) / 2
+            ZIndex: =1
+
+        Subtitle3 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =8
+            Text: =ThisItem.'Texto breve material'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title3.Width
+            X: =Title3.X
+            Y: =Title3.Y + Title3.Height
+            ZIndex: =2
+
+        NextArrow3 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(166, 166, 166, 1)
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Tooltip: ="Exibir detalhes do item"
+            Width: =50
+            X: =Parent.TemplateWidth - Self.Width - 12
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =3
+
+        Separator3 As rectangle:
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =82
+            ZIndex: =4
+
+        Rectangle6 As rectangle:
+            Height: =Parent.TemplateHeight - Separator3.Height
+            OnSelect: =Select(Parent)
+            Visible: =If(ThisItem.IsSelected, true, false)
+            Width: =4
+            ZIndex: =5
+
     Rectangle4_5 As rectangle:
         Fill: =RGBA(120, 30, 119, 1)
         Height: =768
@@ -143,7 +218,7 @@ PM_Cadastro As screen:
 
     TxtSap_1 As text:
         BorderColor: =RGBA(0, 0, 0, 0)
-        Default: =
+        Default: =Subtitle3.Text
         Height: =50
         HoverBorderColor: =RGBA(120, 30, 119, 1)
         Width: =522
@@ -326,91 +401,12 @@ PM_Cadastro As screen:
             Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
         Text: ="Botão"
         X: =1178
-        Y: =518
+        Y: =703
         ZIndex: =22
-
-    Label6 As label:
-        Text: =CountRows(ListaValor)
-        Width: =106
-        X: =1090
-        Y: =353
-        ZIndex: =24
-
-    DataTable3 As dataTable.datatable:
-        BorderStyle: =BorderStyle.Solid
-        DisplayMode: =DisplayMode.Edit
-        Fill: =RGBA(0, 0, 0, 0)
-        HeadingSize: =8
-        Height: =368
-        Items: =ColRegistrosMateriais
-        Size: =8
-        Width: =340
-        X: =662
-        Y: =322
-        ZIndex: =25
-
-        Material_Column2 As dataTableColumn.textualColumn:
-            AutoWidth: =false
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="Material"
-            FieldName: ="Title"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =1
-            Text: =ThisItem.Material
-            Width: =70
-            X: =0
-            Y: =0
-            ZIndex: =1
-
-        "'Texto breve material_Column2' As dataTableColumn.textualColumn":
-            AutoWidth: =false
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="Texto breve material"
-            FieldName: ="Texto_x0020_breve_x0020_material"
-            FieldVariantName: ="textualColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =2
-            Text: =ThisItem.'Texto breve material'
-            Width: =82
-            X: =0
-            Y: =0
-            ZIndex: =2
-
-        Preco_Column2 As dataTableColumn.numberColumn:
-            AutoWidth: =false
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="Preco"
-            FieldName: ="Preco"
-            FieldVariantName: ="numberColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =3
-            Text: =ThisItem.Preco
-            Width: =72
-            X: =0
-            Y: =0
-            ZIndex: =3
-
-        ID_Column1 As dataTableColumn.numberColumn:
-            DisplayMode: =DisplayMode.Edit
-            FieldDisplayName: ="ID"
-            FieldName: ="ID"
-            FieldVariantName: ="numberColumn"
-            Height: =Parent.Height
-            LayoutHeight: =Parent.Height
-            Order: =4
-            Text: =ThisItem.ID
-            Width: =100
-            X: =0
-            Y: =0
-            ZIndex: =4
 
     Label6_1 As label:
         Text: =CountRows(ColRegistrosMateriais)
-        X: =1216
-        Y: =353
+        X: =1188
+        Y: =643
         ZIndex: =26
 
