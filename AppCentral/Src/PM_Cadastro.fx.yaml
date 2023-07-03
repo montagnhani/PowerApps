@@ -218,7 +218,7 @@ PM_Cadastro As screen:
 
     TxtSap_1 As text:
         BorderColor: =RGBA(0, 0, 0, 0)
-        Default: =Subtitle3.Text
+        Default: =If( CountRows(Gallery3.AllItems) = 1 ,Subtitle3.Text,"")
         Height: =50
         HoverBorderColor: =RGBA(120, 30, 119, 1)
         Width: =522
@@ -409,4 +409,10 @@ PM_Cadastro As screen:
         X: =1188
         Y: =643
         ZIndex: =26
+
+    Label6_2 As label:
+        Text: =CountRows(Gallery3.AllItems)
+        X: =1188
+        Y: =577
+        ZIndex: =27
 
