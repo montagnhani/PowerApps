@@ -1,0 +1,94 @@
+TelaInicial As screen:
+
+    Rectangle1 As rectangle:
+        Fill: =RGBA(120, 30, 119, 1)
+        Width: =1366
+        ZIndex: =1
+
+    Button1 As button:
+        Fill: =RGBA(120, 30, 119, 1)
+        Height: =507
+        HoverFill: =ColorFade(RGBA(120, 30, 119, 1), -20%)
+        OnSelect: |-
+            =Navigate(Filtros_Equip_T1_Esc_Mod);
+            Reset(SearchInput01)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =30
+        Text: ="Filtros X Equipamentos"
+        Width: =308
+        X: =12
+        Y: =135
+        ZIndex: =2
+
+    Label2 As label:
+        Align: =Align.Right
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =48
+        Size: =14
+        Text: =User().FullName
+        Width: =230
+        X: =1036
+        Y: =26
+        ZIndex: =5
+
+    Image3 As image:
+        Image: =User().Image
+        ImagePosition: =ImagePosition.Fill
+        RadiusBottomLeft: =55
+        RadiusBottomRight: =55
+        RadiusTopLeft: =55
+        RadiusTopRight: =55
+        X: =1266
+        ZIndex: =6
+
+    Button1_1 As button:
+        Fill: =RGBA(120, 30, 119, 1)
+        Height: =507
+        HoverFill: =ColorFade(RGBA(120, 30, 119, 1), -20%)
+        OnSelect: =
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =30
+        Text: ="PM"
+        Width: =308
+        X: =356
+        Y: =135
+        ZIndex: =7
+
+    Button1_2 As button:
+        Fill: =RGBA(120, 30, 119, 1)
+        Height: =507
+        HoverFill: =ColorFade(RGBA(120, 30, 119, 1), -20%)
+        OnSelect: =
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =30
+        Text: ="Preventivas"
+        Width: =308
+        X: =700
+        Y: =135
+        ZIndex: =8
+
+    Button1_3 As button:
+        Fill: =RGBA(120, 30, 119, 1)
+        Height: =507
+        HoverFill: =ColorFade(RGBA(120, 30, 119, 1), -20%)
+        OnSelect: =
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =30
+        Text: ="Condicional"
+        Width: =308
+        X: =1044
+        Y: =135
+        ZIndex: =9
+

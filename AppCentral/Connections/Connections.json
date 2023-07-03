@@ -1,0 +1,60 @@
+{
+  "8b4caa5e-69a6-4789-a828-f4b2e97d3686": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Excel Online (Business)",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1639/1.0.1639.3319/excelonlinebusiness/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_excelonlinebusiness",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "groups%252F47236c54-aafd-47d5-90f7-6c2957a92a50,b%2521EI0UHaJO5E28R_P6EDlmEwPprC_oDENAioFgov-xANUf7sbITSANR4Qh7UanhYdk,017SZE47XBOMYJRLIXVJF2JBO4PIHQPGET": {
+        "dataSources": {
+          "tbCadastro": {
+            "tableName": "{8D0B6AB5-F400-4032-964E-F203DFE3F8C2}"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "tbCadastro"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "8b4caa5e-69a6-4789-a828-f4b2e97d3686"
+  },
+  "e3c2cc05-d67e-4de2-b651-0e8832612f2f": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/globalperconnector-train1/1.0.1639.3312/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://minhaticloud.sharepoint.com/sites/ManutencaoAutomotivaMundial": {
+        "dataSources": {
+          "AppFiltros": {
+            "tableName": "1fa5b794-7035-4b9c-8acc-9269da5f72df"
+          },
+          "ListaValor": {
+            "tableName": "d03a3b09-9dbb-4798-8e4d-c531bd8e4868"
+          },
+          "Modelos_appFiltros": {
+            "tableName": "1a4cbe8f-78c6-4923-a013-7d20d6f9fcc3"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "AppFiltros",
+      "Modelos_appFiltros",
+      "ListaValor"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "e3c2cc05-d67e-4de2-b651-0e8832612f2f"
+  }
+}
