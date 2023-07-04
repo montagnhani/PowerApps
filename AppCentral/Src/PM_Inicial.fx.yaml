@@ -40,6 +40,7 @@ PM_Inicial As screen:
         Fill: =RGBA(120, 30, 119, 1)
         Height: =401
         HoverFill: =ColorFade(RGBA(120, 30, 119, 1), -20%)
+        OnSelect: =Navigate(PM_Cadastro)
         PressedFill: =ColorFade(RGBA(120, 30, 119, 1), -20%)
         RadiusBottomLeft: =30
         RadiusBottomRight: =30
