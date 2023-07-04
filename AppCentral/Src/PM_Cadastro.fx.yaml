@@ -123,7 +123,8 @@ PM_Cadastro As screen:
                 Valor:Value(Txtvalor.Text),
                 IMG:Foto.Photo,
                 Qt:0
-            })
+            });
+            Notify("Material Cadastrado com Sucesso")
         RadiusBottomLeft: =25
         RadiusBottomRight: =25
         RadiusTopLeft: =25
