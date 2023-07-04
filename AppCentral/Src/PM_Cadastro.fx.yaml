@@ -116,16 +116,14 @@ PM_Cadastro As screen:
         OnSelect: |-
             =Patch(CadastroMaterial, Defaults(CadastroMaterial),
             {
-                Material: TxtSap.Text,
-                DescricaoMaterial: TxtSap_1,
-                Referencia: TxtReferencia,
-                Valor: TxtReferencia_1,
-                Qt:0,
-                Prateleira:0,
-                IMG:Foto.Photo
-            });
-            Notify("Material Cadastrado com Sucesso");
-            Navigate(PM_Inicial)
+                Material:TxtSap.Text,
+                DescricaoMaterial:TxtSap_1.Text,
+                Referencia:TxtReferencia.Text,
+                Prateleira:TxtPrateleira.Text,
+                Valor:Value(Txtvalor.Text),
+                IMG:Foto.Photo,
+                Qt:0
+            })
         RadiusBottomLeft: =25
         RadiusBottomRight: =25
         RadiusTopLeft: =25
@@ -155,7 +153,7 @@ PM_Cadastro As screen:
         Y: =391
         ZIndex: =21
 
-    TxtReferencia_1 As text:
+    Txtvalor As text:
         BorderColor: =RGBA(0, 0, 0, 0)
         Default: =
         Height: =53
@@ -173,4 +171,23 @@ PM_Cadastro As screen:
         X: =116
         Y: =634
         ZIndex: =29
+
+    TxtPrateleira As text:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Default: =""
+        Height: =53
+        HoverBorderColor: =RGBA(120, 30, 119, 1)
+        Width: =224
+        X: =454
+        Y: =532
+        ZIndex: =30
+
+    Label4_4 As label:
+        DisplayMode: =DisplayMode.View
+        Height: =42
+        Text: |-
+            ="PRATELEIRA:"
+        X: =452
+        Y: =493
+        ZIndex: =31
 
