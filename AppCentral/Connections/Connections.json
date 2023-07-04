@@ -39,6 +39,9 @@
           "AppFiltros": {
             "tableName": "1fa5b794-7035-4b9c-8acc-9269da5f72df"
           },
+          "CadastroMaterial": {
+            "tableName": "af871aea-4ae9-47b0-bac9-9dcec9fe2155"
+          },
           "ListaValor": {
             "tableName": "d03a3b09-9dbb-4798-8e4d-c531bd8e4868"
           },
@@ -51,7 +54,8 @@
     "dataSources": [
       "AppFiltros",
       "Modelos_appFiltros",
-      "ListaValor"
+      "ListaValor",
+      "CadastroMaterial"
     ],
     "dependencies": {},
     "dependents": [],

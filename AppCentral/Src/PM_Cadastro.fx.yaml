@@ -10,80 +10,6 @@ PM_Cadastro As screen:
         Y: =16
         ZIndex: =1
 
-    "Gallery3 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-        DelayItemLoading: =true
-        Height: =330
-        Items: =Filter(ColRegistrosMateriais,TxtSap.Text in Material)
-        Layout: =Layout.Vertical
-        LoadingSpinner: =LoadingSpinner.Data
-        TemplatePadding: =0
-        TemplateSize: =116
-        Width: =209
-        X: =905
-        Y: =313
-        ZIndex: =1
-
-        Title2 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =8
-            Text: =ThisItem.Material
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - 86
-            X: =16
-            Y: =(Parent.TemplateHeight - (Self.Size*1.8 + Subtitle2.Size*1.8 + 2 + Body1.Size*1.8)) / 2
-            ZIndex: =1
-
-        Subtitle2 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Size: =8
-            Text: =ThisItem.'Texto breve material'
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Title2.Width
-            X: =Title2.X
-            Y: =Title2.Y + Title2.Height
-            ZIndex: =2
-
-        Body1 As label:
-            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: =ThisItem.Preco
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Title2.Width
-            X: =Title2.X
-            Y: =Subtitle2.Y + Subtitle2.Height
-            ZIndex: =3
-
-        Separator2 As rectangle:
-            Height: =8
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =108
-            ZIndex: =5
-
-        Rectangle5 As rectangle:
-            Height: =Parent.TemplateHeight - Separator2.Height
-            OnSelect: =Select(Parent)
-            Visible: =If(ThisItem.IsSelected, true, false)
-            Width: =4
-            ZIndex: =6
-
     Rectangle4_5 As rectangle:
         Fill: =RGBA(120, 30, 119, 1)
         Height: =768
@@ -146,8 +72,8 @@ PM_Cadastro As screen:
         Height: =53
         HoverBorderColor: =RGBA(120, 30, 119, 1)
         Width: =224
-        X: =792
-        Y: =235
+        X: =120
+        Y: =532
         ZIndex: =14
 
     Label4_1 As label:
@@ -155,22 +81,23 @@ PM_Cadastro As screen:
         Height: =42
         Text: |-
             ="REFERENCIA:"
-        X: =792
-        Y: =199
+        X: =116
+        Y: =493
         ZIndex: =15
 
     Label4_2 As label:
         Text: |-
             ="FOTO:"
-        X: =330
-        Y: =393
+        X: =788
+        Y: =181
         ZIndex: =16
 
     Foto As camera:
         Camera: =0
-        Width: =510
-        X: =330
-        Y: =447
+        Height: =523
+        Width: =550
+        X: =788
+        Y: =221
         ZIndex: =17
 
     Arrow3_4 As arrow.backArrow:
@@ -186,13 +113,16 @@ PM_Cadastro As screen:
     Button4 As button:
         Fill: =RGBA(120, 30, 119, 1)
         Height: =84
-        OnSelect: |
-            =Patch(tbCadastro, Defaults(tbCadastro),
+        OnSelect: |-
+            =Patch(CadastroMaterial, Defaults(CadastroMaterial),
             {
-                SAP: TxtSap.Text,
-                Referencia: TxtReferencia.Text,
-                img: Foto.Photo,
-                Qtd:0
+                Material: TxtSap.Text,
+                DescricaoMaterial: TxtSap_1,
+                Referencia: TxtReferencia,
+                Valor: TxtReferencia_1,
+                Qt:0,
+                Prateleira:0,
+                IMG:Foto.Photo
             });
             Notify("Material Cadastrado com Sucesso");
             Navigate(PM_Inicial)
@@ -202,8 +132,8 @@ PM_Cadastro As screen:
         RadiusTopRight: =25
         Text: ="Cadastrar"
         Width: =232
-        X: =895
-        Y: =659
+        X: =510
+        Y: =660
         ZIndex: =19
 
     Label5 As label:
@@ -211,218 +141,28 @@ PM_Cadastro As screen:
         Text: |-
             ="DESCRIÇÃO MATERIAL:"
         Width: =228
-        X: =340
-        Y: =205
+        X: =116
+        Y: =353
         ZIndex: =20
 
     TxtSap_1 As text:
         BorderColor: =RGBA(0, 0, 0, 0)
-        Default: =If( CountRows(Gallery3.AllItems) = 1 ,Subtitle2.Text,"")
+        Default: =
         Height: =50
         HoverBorderColor: =RGBA(120, 30, 119, 1)
         Width: =412
-        X: =340
-        Y: =235
+        X: =116
+        Y: =391
         ZIndex: =21
-
-    Button5 As button:
-        OnSelect: |-
-            =ClearCollect(ColRegistrosMateriais,Filter(ListaValor,id_esp >=1));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-            UpdateContext({MaiorIdEspelho:Max(ColRegistrosMateriais,id_esp)});
-            Collect(ColRegistrosMateriais,Filter(ListaValor,id_esp>MaiorIdEspelho));
-        Text: ="Botão"
-        X: =1178
-        Y: =703
-        ZIndex: =22
-
-    Label6_1 As label:
-        Text: =CountRows(ColRegistrosMateriais)
-        X: =1188
-        Y: =643
-        ZIndex: =26
-
-    Label6_2 As label:
-        Text: =CountRows(Gallery3.AllItems)
-        X: =1188
-        Y: =577
-        ZIndex: =27
 
     TxtReferencia_1 As text:
         BorderColor: =RGBA(0, 0, 0, 0)
-        Default: =If( CountRows(Gallery3.AllItems) = 1 ,Body1.Text,"")
+        Default: =
         Height: =53
         HoverBorderColor: =RGBA(120, 30, 119, 1)
         Width: =224
-        X: =1060
-        Y: =235
+        X: =116
+        Y: =676
         ZIndex: =28
 
     Label4_3 As label:
@@ -430,7 +170,7 @@ PM_Cadastro As screen:
         Height: =42
         Text: |-
             ="VALOR:"
-        X: =1060
-        Y: =199
+        X: =116
+        Y: =634
         ZIndex: =29
 
