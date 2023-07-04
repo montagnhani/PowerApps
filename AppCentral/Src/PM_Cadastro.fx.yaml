@@ -19,8 +19,8 @@ PM_Cadastro As screen:
         TemplatePadding: =0
         TemplateSize: =116
         Width: =209
-        X: =640
-        Y: =353
+        X: =905
+        Y: =313
         ZIndex: =1
 
         Title2 As label:
@@ -127,7 +127,7 @@ PM_Cadastro As screen:
         Text: |-
             ="SAP:"
         X: =116
-        Y: =193
+        Y: =199
         ZIndex: =12
 
     TxtSap As text:
@@ -135,7 +135,7 @@ PM_Cadastro As screen:
         Default: =""
         Height: =50
         HoverBorderColor: =RGBA(120, 30, 119, 1)
-        Width: =254
+        Width: =182
         X: =116
         Y: =235
         ZIndex: =13
@@ -145,9 +145,9 @@ PM_Cadastro As screen:
         Default: =""
         Height: =53
         HoverBorderColor: =RGBA(120, 30, 119, 1)
-        Width: =322
-        X: =1016
-        Y: =232
+        Width: =224
+        X: =792
+        Y: =235
         ZIndex: =14
 
     Label4_1 As label:
@@ -155,22 +155,22 @@ PM_Cadastro As screen:
         Height: =42
         Text: |-
             ="REFERENCIA:"
-        X: =1016
-        Y: =190
+        X: =792
+        Y: =199
         ZIndex: =15
 
     Label4_2 As label:
         Text: |-
             ="FOTO:"
-        X: =116
-        Y: =336
+        X: =330
+        Y: =393
         ZIndex: =16
 
     Foto As camera:
         Camera: =0
         Width: =510
-        X: =116
-        Y: =376
+        X: =330
+        Y: =447
         ZIndex: =17
 
     Arrow3_4 As arrow.backArrow:
@@ -211,8 +211,8 @@ PM_Cadastro As screen:
         Text: |-
             ="DESCRIÇÃO MATERIAL:"
         Width: =228
-        X: =412
-        Y: =195
+        X: =340
+        Y: =205
         ZIndex: =20
 
     TxtSap_1 As text:
@@ -220,8 +220,8 @@ PM_Cadastro As screen:
         Default: =If( CountRows(Gallery3.AllItems) = 1 ,Subtitle2.Text,"")
         Height: =50
         HoverBorderColor: =RGBA(120, 30, 119, 1)
-        Width: =522
-        X: =412
+        Width: =412
+        X: =340
         Y: =235
         ZIndex: =21
 
@@ -414,4 +414,23 @@ PM_Cadastro As screen:
         X: =1188
         Y: =577
         ZIndex: =27
+
+    TxtReferencia_1 As text:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Default: =""
+        Height: =53
+        HoverBorderColor: =RGBA(120, 30, 119, 1)
+        Width: =224
+        X: =1060
+        Y: =235
+        ZIndex: =28
+
+    Label4_3 As label:
+        DisplayMode: =DisplayMode.View
+        Height: =42
+        Text: |-
+            ="VALOR:"
+        X: =1060
+        Y: =199
+        ZIndex: =29
 

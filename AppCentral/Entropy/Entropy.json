@@ -121,6 +121,7 @@
     "Label4": 66,
     "Label4_1": 65,
     "Label4_2": 72,
+    "Label4_3": 181,
     "Label5": 67,
     "Label6_1": 82,
     "Label6_2": 81,
@@ -178,12 +179,13 @@
     "Title2": 76,
     "Title4": 96,
     "TxtReferencia": 69,
+    "TxtReferencia_1": 180,
     "TxtSap": 70,
     "TxtSap_1": 71
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "07/04/2023 17:19:15",
+  "HeaderLastSavedDateTimeUTC": "07/04/2023 18:48:33",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "8b4caa5e-69a6-4789-a828-f4b2e97d3686": "\"/providers/microsoft.powerapps/apis/shared_excelonlinebusiness/connections/shared-excelonlinebu-b1fd8a46-d591-47ff-a485-1a0b-fcd3e00a\"",
@@ -349,6 +351,7 @@
     "Label4": {},
     "Label4_1": {},
     "Label4_2": {},
+    "Label4_3": {},
     "Label5": {},
     "Label6_1": {},
     "Label6_2": {},
@@ -406,6 +409,7 @@
     "Title2": {},
     "Title4": {},
     "TxtReferencia": {},
+    "TxtReferencia_1": {},
     "TxtSap": {},
     "TxtSap_1": {}
   },
@@ -531,6 +535,7 @@
     "Label4": 135,
     "Label4_1": 134,
     "Label4_2": 141,
+    "Label4_3": 134,
     "Label5": 136,
     "Label6_1": 151,
     "Label6_2": 150,
@@ -588,6 +593,7 @@
     "Title2": 145,
     "Title4": 17,
     "TxtReferencia": 138,
+    "TxtReferencia_1": 138,
     "TxtSap": 139,
     "TxtSap_1": 140
   },
@@ -614,10 +620,10 @@
       "galleryTemplate": 3,
       "icon": 10,
       "image": 12,
-      "label": 61,
+      "label": 62,
       "rectangle": 17,
       "screen": 8,
-      "text": 18,
+      "text": 19,
       "typedDataCard": 14
     },
     "DeserializationLoadTime": 1.7868775
