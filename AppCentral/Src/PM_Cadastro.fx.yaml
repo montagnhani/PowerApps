@@ -417,7 +417,7 @@ PM_Cadastro As screen:
 
     TxtReferencia_1 As text:
         BorderColor: =RGBA(0, 0, 0, 0)
-        Default: =""
+        Default: =If( CountRows(Gallery3.AllItems) = 1 ,Body1.Text,"")
         Height: =53
         HoverBorderColor: =RGBA(120, 30, 119, 1)
         Width: =224
